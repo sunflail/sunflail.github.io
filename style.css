@@ -1,0 +1,53 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: center;
+}
+
+body {
+    padding-top: 60px;
+    background-color: aquamarine;
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    color: orangered;
+    list-style: none;
+    text-decoration: none;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
+    border: 5px black solid;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 5px black solid;
+    border-top: 60px solid transparent;
+    margin-top: -60px;
+    /* background-clip: padding-box; */
+}
+
+.project-tile {
+    border: 3px darkgoldenrod solid;
+}
