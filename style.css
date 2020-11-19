@@ -10,14 +10,16 @@ h6 {
 body {
     padding-top: 60px;
     background-color: aquamarine;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 a:link {
     color: blue;
+    font-style: italic;
 }
 
 a:visited {
-    color: purple;
+    color: rgb(80, 19, 19);
 }
 
 a:hover {
@@ -32,9 +34,28 @@ img {
     max-width: 100%;
 }
 
+@media print {
+
+    #header,
+    #footer,
+    #nav {
+        display: none !important;
+    }
+
+    body {
+        background: none;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+}
+
 .welcome {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
+    height: 100vh;
     border: 5px black solid;
 }
 
