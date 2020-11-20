@@ -29,7 +29,6 @@ a:hover {
 }
 
 img {
-    display: flex;
     justify-content: center;
     max-width: 100%;
 }
