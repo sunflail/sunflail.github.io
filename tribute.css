@@ -2,7 +2,7 @@
     background-image: url("resources/star-control-2.jpg");
     background-color: #cccccc;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     height: 100vmax;
     width: 100vmax;
     position: relative;
