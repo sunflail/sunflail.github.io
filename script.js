@@ -11,6 +11,8 @@ BLUE #0000FF
 INDIGO #4B0082
 VIOLET #EE82EE
 */
+'use strict';
+
 var rainbowChoice = [
     ["red", "#FF0000"],
     ["orange", "#FFA500"],
@@ -20,51 +22,66 @@ var rainbowChoice = [
     ["indigo", "#4B0082"],
     ["violet", "#EE82EE"]
 ];
+// ask if the user wants to set the background color
+let wantsColorChoice = confirm("Would you like to change the background color? Y(OK) or N(Cancel)");
 // -Show the user the color choices (roygbiv) - display the array
 // -Prompt them to pick one of the colors (type it in)
 // -store it in a value - window.pop()
-var userColorChoice = window.prompt("Choose your background color(ROYGBIV or random)");
-console.log(userColorChoice)
+let userColorChoice;
+if (wantsColorChoice) {
+    userColorChoice = window.prompt("Choose your background color(ROYGBIV (the word) or random)");
+    console.log(userColorChoice);
+    setBackgroundToUserChoice();
+};
+
+// helper functions
+
 // -sanitize the input
 function sanitizeInput(input) {
-    var sanitized;
+    let sanitized;
     return sanitized = input.trim().toLowerCase();
 };
-checkIfChoiceIsInRainbow();
+
+function generateHex() {
+    let hex = "0123456789ABCDEF"
+    let randIdx = Math.floor(Math.random() * hex.length);
+    return hex[randIdx];
+};
+
 // -check the value against the array of valid colors
 // - need to turn this into a loop
-function checkIfChoiceIsInRainbow() {
+function setBackgroundToUserChoice() {
+    let rainbowChoiceHex;
     if (sanitizeInput(userColorChoice) === rainbowChoice[0][0]) {
-        var rainbowChoiceHex = rainbowChoice[0][1];
+        rainbowChoiceHex = rainbowChoice[0][1];
         console.log(rainbowChoiceHex);
         alert(`Your color choice, ${userColorChoice}, has a hex code of ${rainbowChoiceHex}`);
     } else if (sanitizeInput(userColorChoice) === rainbowChoice[1][0]) {
-        var rainbowChoiceHex = rainbowChoice[1][1];
+        rainbowChoiceHex = rainbowChoice[1][1];
         console.log(rainbowChoiceHex);
         alert(`Your color choice, ${userColorChoice}, has a hex code of ${rainbowChoiceHex}`);
     } else if (sanitizeInput(userColorChoice) === rainbowChoice[2][0]) {
-        var rainbowChoiceHex = rainbowChoice[2][1];
+        rainbowChoiceHex = rainbowChoice[2][1];
         console.log(rainbowChoiceHex);
         alert(`Your color choice, ${userColorChoice}, has a hex code of ${rainbowChoiceHex}`);
     } else if (sanitizeInput(userColorChoice) === rainbowChoice[3][0]) {
-        var rainbowChoiceHex = rainbowChoice[3][1];
+        rainbowChoiceHex = rainbowChoice[3][1];
         console.log(rainbowChoiceHex);
         alert(`Your color choice, ${userColorChoice}, has a hex code of ${rainbowChoiceHex}`);
     } else if (sanitizeInput(userColorChoice) === rainbowChoice[4][0]) {
-        var rainbowChoiceHex = rainbowChoice[4][1];
+        rainbowChoiceHex = rainbowChoice[4][1];
         console.log(rainbowChoiceHex);
         alert(`Your color choice, ${userColorChoice}, has a hex code of ${rainbowChoiceHex}`);
     } else if (sanitizeInput(userColorChoice) === rainbowChoice[5][0]) {
-        var rainbowChoiceHex = rainbowChoice[5][1];
+        rainbowChoiceHex = rainbowChoice[5][1];
         console.log(rainbowChoiceHex);
         alert(`Your color choice, ${userColorChoice}, has a hex code of ${rainbowChoiceHex}`);
     } else if (sanitizeInput(userColorChoice) === rainbowChoice[6][0]) {
-        var rainbowChoiceHex = rainbowChoice[6][1];
+        rainbowChoiceHex = rainbowChoice[6][1];
         console.log(rainbowChoiceHex);
         alert(`Your color choice, ${userColorChoice}, has a hex code of ${rainbowChoiceHex}`);
     } else if (sanitizeInput(userColorChoice) === "random") {
-        var rainbowChoiceHex =
-            `#${generateHex()}${generateHex()}${generateHex()}${generateHex()}${generateHex()}${generateHex()}`;
+        rainbowChoiceHex = `#${generateHex()}${generateHex()}${generateHex()}${generateHex()}${generateHex()}${generateHex()}`;
         console.log(rainbowChoiceHex);
         alert(`Your chose ${userColorChoice}, so here's the hex - ${rainbowChoiceHex}`);
     } else {
@@ -73,12 +90,6 @@ function checkIfChoiceIsInRainbow() {
 
     document.body.style.backgroundColor = rainbowChoiceHex;
 };
-
-function generateHex() {
-    var hex = "0123456789ABCDEF"
-    var randIdx = Math.floor(Math.random() * hex.length);
-    return hex[randIdx];
-}
 // -display the color hex code in an alert once they type in a correct choice
 
 // -loop back and do it again
