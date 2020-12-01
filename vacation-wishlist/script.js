@@ -44,6 +44,14 @@ function createCard(name, location, photo, description) {
     let newCardDescription = document.createElement("p");
     newCardDescription.classList = "card-text";
     newCardDescription.innerHTML = description;
+    let newEditBtn = document.createElement("a");
+    newEditBtn.classList = "btn btn-warning card-link";
+    newEditBtn.href = "#"
+    newEditBtn.innerHTML = "Edit"
+    let newDeleteBtn = document.createElement("a");
+    newDeleteBtn.classList = "btn btn-danger card-link";
+    newDeleteBtn.href = "#"
+    newDeleteBtn.innerHTML = "Delete"
     document.getElementById("savedDestinations")
         .appendChild(newCard)
         .appendChild(newImg);
@@ -55,11 +63,23 @@ function createCard(name, location, photo, description) {
         .appendChild(newCardSubTitle)
     document.getElementById("savedDestinations")
         .appendChild(newCardBody)
-        .appendChild(newCardDescription);
+        .appendChild(newCardDescription)
+    document.getElementById("savedDestinations")
+        .appendChild(newCardBody)
+        .appendChild(newEditBtn)
+    document.getElementById("savedDestinations")
+        .appendChild(newCardBody)
+        .appendChild(newDeleteBtn);
 }
 
 function addEditButton() {
-    //    <a href="#" class="btn btn-warning"> Edit button prompts for new elements for the above </a> 
+    //    <a href="#" class="btn btn-warning"> Edit button prompts for new elements for the above </a>
+    let newEdit = document.createElement("button");
+    newEdit.classList = "btn btn-warning";
+    newEdit.innerHTML = "Edit";
+    document.getElementById("savedDestination")
+        .appendChild(newCardBody)
+        .appendChild()
 }
 
 function addDeleteButton() {
