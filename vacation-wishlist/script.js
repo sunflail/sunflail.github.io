@@ -22,9 +22,15 @@ document.getElementById("information").addEventListener("submit", function (even
     let newLocation = event.target.location.value;
     let newPhotograph = event.target.photo.value;
     let newDescription = event.target.description.value;
-    console.log(`${newName}, ${newLocation}, ${newPhotograph}, ${newDescription}`);
     createCard(newName, newLocation, newPhotograph, newDescription);
+    clearFields(event.target);
 });
+
+function clearFields(form) {
+    for (let i = 0; i < form.length; i++) {
+        form.elements[i].value = "";
+    }
+}
 
 function createCard(name, location, photo, description) {
     let newCard = document.createElement("div");
@@ -48,10 +54,12 @@ function createCard(name, location, photo, description) {
     newEditBtn.classList = "btn btn-warning card-link";
     newEditBtn.href = "#"
     newEditBtn.innerHTML = "Edit"
+    newEditBtn.onclick = editItem;
     let newDeleteBtn = document.createElement("a");
     newDeleteBtn.classList = "btn btn-danger card-link";
     newDeleteBtn.href = "#"
     newDeleteBtn.innerHTML = "Delete"
+    newDeleteBtn.onclick = deleteItem;
     document.getElementById("savedDestinations")
         .appendChild(newCard)
         .appendChild(newImg);
@@ -72,16 +80,27 @@ function createCard(name, location, photo, description) {
         .appendChild(newDeleteBtn);
 }
 
-function addEditButton() {
-    //    <a href="#" class="btn btn-warning"> Edit button prompts for new elements for the above </a>
-    let newEdit = document.createElement("button");
-    newEdit.classList = "btn btn-warning";
-    newEdit.innerHTML = "Edit";
-    document.getElementById("savedDestination")
-        .appendChild(newCardBody)
-        .appendChild()
+function editItem(event) {
+    // When clicked, prompt the user through the 4 fields and give the option to change them.
+    // Accept new values, if blank or cancel retain current values
+    let cardBody = event.target.parentElement;
+    let rename = cardBody.children[0].innerHTML = prompt("What is the new name?");
+    cardBody.children[1].innerHTML = prompt("What is the new location?");
+    cardBody.children[2].innerHTML = prompt("What is the new description?");
+    let oldImg = event.target.parentElement.previousSibling.children[0];
+    let wantNewImg = confirm("Do you want to change the picture?");
+    if (wantNewImg) {
+        oldImg.src = prompt("Please enter the new URL and press okay");
+        oldImg.alt = rename;
+    }
 }
 
-function addDeleteButton() {
-    //   <a href="#" class = "btn btn-danger"> Delete button removes all of the elements / tags from the DOM </a>
+function deleteItem(event) {
+    // When clicked, delete the entire card
+    // Add an event listener, figure out how to target the entire parent card, and remove the whole parent html element.
+    let cardBody = event.target.parentElement;
+    // The img is a sibling card so needs to also be targeted and removed since the buttons only belong to card body as setup in this implementation of bootstrap
+    let oldImg = event.target.parentElement.previousSibling;
+    cardBody.remove();
+    oldImg.remove();
 }
