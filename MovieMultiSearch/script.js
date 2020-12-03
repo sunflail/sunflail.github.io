@@ -42,7 +42,7 @@ function clickButton(event) {
   // Create the card
   createCard();
   // Clear the form
-  clearForm(event.target);
+  event.target.reset();
 }
 
 function createSearchByTitleButton(divLocation, buttonName) {
@@ -79,12 +79,6 @@ function createSearchGiphyButton(divLocation) {
 function clickSearchGiphyButton(event) {
   event.preventDefault();
   getGiphyGif(event.target.value);
-}
-
-function clearForm(form) {
-  for (let i = 0; i < form.length; i++) {
-    form.elements[i].value = "";
-  }
 }
 
 // Clears the div containing all of the results and recreates it - called on every button push
