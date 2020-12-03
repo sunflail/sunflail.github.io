@@ -120,7 +120,7 @@ function getGiphyGif(terms) {
   clearResults();
   axios
     .get(
-      `https://api.giphy.com/v1/gifs/search?api_key=3yV73wM1M4ory5C4ecWSfltT8brbZH71&q=${terms}&limit=12`
+      `https://api.giphy.com/v1/gifs/search?api_key=3yV73wM1M4ory5C4ecWSfltT8brbZH71&q=${terms}&limit=12/`
     )
     .then(function (response) {
       const gifs = response.data.data;
@@ -140,7 +140,7 @@ function getGiphyGif(terms) {
 function getOMDBResults(terms) {
   clearResults();
   axios
-    .get(`https://www.omdbapi.com/?apikey=967682e&s=${terms}&type=movie`)
+    .get(`https://www.omdbapi.com/?apikey=967682e&s=${terms}&type=movie/`)
     .then(function (response) {
       if (response.data.Response === "False") {
         poster =
@@ -169,7 +169,7 @@ function getOMDBResults(terms) {
 function getIMDBResults(terms) {
   clearResults();
   axios
-    .get(`https://imdb-api.com/en/API/SearchMovie/k_qdx7memh/${terms}`)
+    .get(`https://imdb-api.com/en/API/SearchMovie/k_qdx7memh/${terms}/`)
     .then(function (response) {
       const titles = response.data.results;
       if (titles.length > 12) {
