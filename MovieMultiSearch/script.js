@@ -168,8 +168,14 @@ function getOMDBResults(terms) {
 // IMDB button
 function getIMDBResults(terms) {
   clearResults();
-  axios
-    .get(`https://imdb-api.com/en/API/SearchMovie/k_qdx7memh/${terms}/`)
+
+  let url = [`https://imdb-api.com/en/API/SearchMovie/k_qdx7memh/${terms}/`];
+  axios({
+    method: "get",
+    url: url + "?nocache=" + new Date().getTime(), // Safari fix
+    // withCredentials: true,
+  })
+    // get(`https://imdb-api.com/en/API/SearchMovie/k_qdx7memh/${terms}/`)
     .then(function (response) {
       const titles = response.data.results;
       if (titles.length > 12) {
