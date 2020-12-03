@@ -120,7 +120,7 @@ function getGiphyGif(terms) {
   clearResults();
   axios
     .get(
-      `https://api.giphy.com/v1/gifs/search?api_key=3yV73wM1M4ory5C4ecWSfltT8brbZH71&q=${terms}&limit=12/`
+      `https://api.giphy.com/v1/gifs/search?api_key=3yV73wM1M4ory5C4ecWSfltT8brbZH71&q=${terms}&limit=12`
     )
     .then(function (response) {
       const gifs = response.data.data;
@@ -140,7 +140,7 @@ function getGiphyGif(terms) {
 function getOMDBResults(terms) {
   clearResults();
   axios
-    .get(`https://www.omdbapi.com/?apikey=967682e&s=${terms}&type=movie/`)
+    .get(`https://www.omdbapi.com/?apikey=967682e&s=${terms}&type=movie`)
     .then(function (response) {
       if (response.data.Response === "False") {
         poster =
@@ -165,11 +165,13 @@ function getOMDBResults(terms) {
     });
 }
 
+// try some babel something to help with polyfills
+
 // IMDB button
 function getIMDBResults(terms) {
   clearResults();
 
-  let url = [`https://imdb-api.com/en/API/SearchMovie/k_qdx7memh/${terms}/`];
+  let url = [`https://imdb-api.com/en/API/SearchMovie/k_qdx7memh/${terms}`];
   axios({
     method: "get",
     url: url + "?nocache=" + new Date().getTime(), // Safari fix
