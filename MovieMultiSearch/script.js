@@ -146,7 +146,7 @@ function getGiphyGif(terms) {
 function getOMDBResults(terms) {
   clearResults();
   axios
-    .get(`http://www.omdbapi.com/?apikey=967682e&s=${terms}&type=movie`)
+    .get(`https://www.omdbapi.com/?apikey=967682e&s=${terms}&type=movie`)
     .then(function (response) {
       if (response.data.Response === "False") {
         poster =
