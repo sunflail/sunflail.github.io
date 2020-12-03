@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie DB</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container border border-dark text-center">
+            <h1 class="display-4">Movie Multi Search</h1>
+            <p class="lead">Enter the movie you want to find. Each entry will create a card with buttons to search for
+                movies with the search term using the appropriate API, and gifs with the search term using Giphy.</p>
+            <p>Please note that OMDB, IMDB, and Giphy all have per-day limits as I'm using the free api's to access, so
+                if it doesn't work try again tomorrow (I'll add error catching for over rate limit at some point).</p>
+            <div class="row border border-dark">
+                <div class="col border border-dark">
+                    <form action="" id="search_form" class="form-group">
+                        <div class="form-group">
+                            <label for="search_terms">Search Keyword</label>
+                            <input type="text" id="search_terms" class="form-control"
+                                placeholder="What do you want to look for?" required>
+                        </div>
+                        <button id="omdb_submit" type="submit" class="btn btn-primary card-list">OMDB</button>
+                        <button id="imdb_submit" type="submit" class="btn btn-primary card-list">IMDB</button>
+                    </form>
+                </div>
+                <div class="col border border-warning">
+                    <h3>Choices</h3>
+                    <div id="result" class="row border border-primary">
+                        <div id="result_card" class="col border border-primary">
+                            <div id="movies_card" class="card border border-danger">
+                                <!-- <p>Cards with keyword title go here - remove this paragraph</p>
+                                // Dynmically created boostrap cards with JS 
+                                <div class="card-body border border-primary">
+                                    // Dynmically created boostrap cards with JS
+                                    <h3 class="card-title">Example card for structure</h3>
+                                    <div id="btn_container" class="card-subtitle">
+                                        <a href="#" class="btn btn-primary">By Title</a>
+                                        <a href="#" class="btn btn-primary">Search Giphy</a>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="sub_results_container" class="col border border-warning">
+                    <h3>Results</h3>
+                    <div id="sub_results_card" class="card-body border border-danger">
+                        <p>Results from by title and by giphy gif go here, clearing out the previous contents
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
+    <!-- Axios JS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- My JS -->
+    <script src="./script.js"></script>
+</body>
+
+</html>
